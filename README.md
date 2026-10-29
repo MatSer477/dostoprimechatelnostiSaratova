@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Достопримечательности Саратовской области</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
     :root {
         --primary-color: #004080;
@@ -48,7 +49,7 @@
         padding: 1rem 0;
         position: sticky;
         top: 0;
-        z-index: 100;
+        z-index: 1000;
         border-bottom: 1px solid #ddd;
     }
 
@@ -125,150 +126,3 @@
     .card h3 {
         color: var(--primary-color);
         margin-bottom: 0.5rem;
-        font-size: 1.3rem;
-    }
-
-    .card p {
-        flex-grow: 1;
-        font-size: 0.95rem;
-        color: #555;
-    }
-
-    .card a {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.5rem 1rem;
-        background: var(--primary-color);
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .card a:hover {
-        background: var(--secondary-color);
-    }
-
-    .map-section {
-        background: var(--bg-light);
-        padding: 3rem 2rem;
-        margin-top: 3rem;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .map-section h2 {
-        margin-bottom: 1.5rem;
-        color: var(--primary-color);
-    }
-
-    .placeholder-map {
-        width: 100%;
-        height: 400px;
-        border: 0;
-        border-radius: 10px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 2rem;
-        background: var(--primary-color);
-        color: white;
-        margin-top: 3rem;
-    }
-</style>
-</head>
-<body>
-
-<header>
-    <h1>Саратовская область</h1>
-    <p>Волга, меловые горы и места, с которых начался путь в космос</p>
-</header>
-
-<nav>
-    <div class="nav-container">
-        <a href="#attractions">Достопримечательности</a>
-        <a href="#map">Карта</a>
-    </div>
-</nav>
-
-<main>
-    <p class="intro">
-        Саратовская область раскинулась по берегам Волги. Здесь можно увидеть
-        старинные театры и музеи, лесистые горы национального парка и памятные места,
-        связанные с первым полётом человека в космос.
-    </p>
-
-    <section id="attractions" class="attractions-grid">
-
-        <div class="card">
-            <img src="images/park-pobedy.jpg" alt="Парк Победы на Соколовой горе" loading="lazy">
-            <div class="card-content">
-                <h3>Парк Победы на Соколовой горе</h3>
-                <p>Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/radishchev-museum.jpg" alt="Музей имени Радищева" loading="lazy">
-            <div class="card-content">
-                <h3>Музей имени Радищева</h3>
-                <p>Один из старейших художественных музеев России с богатой коллекцией живописи.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/conservatory.jpg" alt="Саратовская консерватория" loading="lazy">
-            <div class="card-content">
-                <h3>Саратовская консерватория</h3>
-                <p>Историческое здание с концертным залом, одна из музыкальных жемчужин города.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/gagarin-landing.jpg" alt="Место приземления Гагарина" loading="lazy">
-            <div class="card-content">
-                <h3>Место приземления Гагарина</h3>
-                <p>Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/khvalynsk-park.jpg" alt="Национальный парк «Хвалынский»" loading="lazy">
-            <div class="card-content">
-                <h3>Национальный парк «Хвалынский»</h3>
-                <p>Лесистые склоны Приволжской возвышенности, живописные виды и тропы для прогулок.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/volsk-chalk-mountains.jpg" alt="Меловые горы в Вольске" loading="lazy">
-            <div class="card-content">
-                <h3>Меловые горы в Вольске</h3>
-                <p>Белые склоны над Волгой и старые карьеры, связанные с историей цементной промышленности.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-    </section>
-
-    <section id="map" class="map-section">
-        <h2>Карта</h2>
-        <iframe class="placeholder-map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=45.85,51.40,46.25,51.65&layer=mapnik"
-            loading="lazy"></iframe>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2026 Путеводитель по Саратовской области</p>
-</footer>
-
-</body>
-</html>
