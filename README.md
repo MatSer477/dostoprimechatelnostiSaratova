@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Достопримечательности Санкт-Петербурга</title>
+<title>Достопримечательности Саратовской области</title>
 <style>
     :root {
         --primary-color: #004080;
@@ -182,8 +182,8 @@
 <body>
 
 <header>
-    <h1>Санкт-Петербург</h1>
-    <p>Главные достопримечательности северной столицы</p>
+    <h1>Саратовская область</h1>
+    <p>Волга, меловые горы и места, с которых начался путь в космос</p>
 </header>
 
 <nav>
@@ -195,62 +195,63 @@
 
 <main>
     <p class="intro">
-        Санкт-Петербург — город дворцов, мостов и белых ночей. Ниже собраны места,
-        которые стоит увидеть в первую очередь.
+        Саратовская область раскинулась по берегам Волги. Здесь можно увидеть
+        старинные театры и музеи, лесистые горы национального парка и памятные места,
+        связанные с первым полётом человека в космос.
     </p>
 
     <section id="attractions" class="attractions-grid">
 
         <div class="card">
-            <img src="images/hermitage.jpg" alt="Эрмитаж" loading="lazy">
+            <img src="images/park-pobedy.jpg" alt="Парк Победы на Соколовой горе" loading="lazy">
             <div class="card-content">
-                <h3>Эрмитаж</h3>
-                <p>Один из крупнейших музеев мира с коллекцией в миллионы экспонатов.</p>
+                <h3>Парк Победы на Соколовой горе</h3>
+                <p>Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.</p>
                 <a href="#">Подробнее</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/savior-on-blood.jpg" alt="Спас на Крови" loading="lazy">
+            <img src="images/radishchev-museum.jpg" alt="Музей имени Радищева" loading="lazy">
             <div class="card-content">
-                <h3>Спас на Крови</h3>
-                <p>Храм в русском стиле, украшенный уникальной мозаикой.</p>
+                <h3>Музей имени Радищева</h3>
+                <p>Один из старейших художественных музеев России с богатой коллекцией живописи.</p>
                 <a href="#">Подробнее</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/peterhof.jpg" alt="Петергоф" loading="lazy">
+            <img src="images/conservatory.jpg" alt="Саратовская консерватория" loading="lazy">
             <div class="card-content">
-                <h3>Петергоф</h3>
-                <p>Парадная императорская резиденция с каскадами фонтанов.</p>
+                <h3>Саратовская консерватория</h3>
+                <p>Историческое здание с концертным залом, одна из музыкальных жемчужин города.</p>
                 <a href="#">Подробнее</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/isaac-cathedral.jpg" alt="Исаакиевский собор" loading="lazy">
+            <img src="images/gagarin-landing.jpg" alt="Место приземления Гагарина" loading="lazy">
             <div class="card-content">
-                <h3>Исаакиевский собор</h3>
-                <p>Величественный собор с колоннадой, откуда открывается вид на город.</p>
+                <h3>Место приземления Гагарина</h3>
+                <p>Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.</p>
                 <a href="#">Подробнее</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/bronze-horseman.jpg" alt="Медный всадник" loading="lazy">
+            <img src="images/khvalynsk-park.jpg" alt="Национальный парк «Хвалынский»" loading="lazy">
             <div class="card-content">
-                <h3>Медный всадник</h3>
-                <p>Памятник Петру I — один из главных символов города.</p>
+                <h3>Национальный парк «Хвалынский»</h3>
+                <p>Лесистые склоны Приволжской возвышенности, живописные виды и тропы для прогулок.</p>
                 <a href="#">Подробнее</a>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/palace-bridge.jpg" alt="Дворцовый мост" loading="lazy">
+            <img src="images/volsk-chalk-mountains.jpg" alt="Меловые горы в Вольске" loading="lazy">
             <div class="card-content">
-                <h3>Дворцовый мост</h3>
-                <p>Разводной мост через Неву, главное ночное зрелище города.</p>
+                <h3>Меловые горы в Вольске</h3>
+                <p>Белые склоны над Волгой и старые карьеры, связанные с историей цементной промышленности.</p>
                 <a href="#">Подробнее</a>
             </div>
         </div>
@@ -260,13 +261,13 @@
     <section id="map" class="map-section">
         <h2>Карта</h2>
         <iframe class="placeholder-map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=30.20,59.88,30.45,60.00&layer=mapnik"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=45.85,51.40,46.25,51.65&layer=mapnik"
             loading="lazy"></iframe>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 Путеводитель по Санкт-Петербургу</p>
+    <p>&copy; 2026 Путеводитель по Саратовской области</p>
 </footer>
 
 </body>
