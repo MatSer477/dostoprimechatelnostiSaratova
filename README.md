@@ -4,279 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Достопримечательности Саратовской области</title>
-<style>
-    :root {
-        --primary-color: #004080;
-        --secondary-color: #0066cc;
-        --text-color: #333;
-        --bg-light: #f5f7fa;
-    }
-
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Arial', sans-serif;
-    }
-
-    body {
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: #fff;
-    }
-
-    header {
-        background: linear-gradient(135deg, var(--primary-color), #003366);
-        color: white;
-        padding: 2rem 0;
-        text-align: center;
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 0.5rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    }
-
-    header p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-    }
-
-    nav {
-        background: var(--bg-light);
-        padding: 1rem 0;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        border-bottom: 1px solid #ddd;
-    }
-
-    .nav-container {
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        flex-wrap: wrap;
-    }
-
-    .nav-container a {
-        text-decoration: none;
-        color: var(--text-color);
-        font-weight: bold;
-        transition: color 0.3s;
-    }
-
-    .nav-container a:hover {
-        color: var(--primary-color);
-    }
-
-    main {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-
-    .intro {
-        text-align: center;
-        margin-bottom: 3rem;
-        font-size: 1.1rem;
-        line-height: 1.8;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .attractions-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-    }
-
-    .card {
-        background: white;
-        border-radius: 10px;
-        overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        background: #e9edf2;
-    }
-
-    .card-content {
-        padding: 1.5rem;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .card h3 {
-        color: var(--primary-color);
-        margin-bottom: 0.5rem;
-        font-size: 1.3rem;
-    }
-
-    .card p {
-        flex-grow: 1;
-        font-size: 0.95rem;
-        color: #555;
-    }
-
-    .card a {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.5rem 1rem;
-        background: var(--primary-color);
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    .card a:hover {
-        background: var(--secondary-color);
-    }
-
-    .map-section {
-        background: var(--bg-light);
-        padding: 3rem 2rem;
-        margin-top: 3rem;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .map-section h2 {
-        margin-bottom: 1.5rem;
-        color: var(--primary-color);
-    }
-
-    .placeholder-map {
-        width: 100%;
-        height: 400px;
-        border: 0;
-        border-radius: 10px;
-    }
-
-    footer {
-        text-align: center;
-        padding: 2rem;
-        background: var(--primary-color);
-        color: white;
-        margin-top: 3rem;
-    }
-</style>
-</head>
-<body>
-
-<header>
-    <h1>Саратовская область</h1>
-    <p>Волга, меловые горы и места, с которых начался путь в космос</p>
-</header>
-
-<nav>
-    <div class="nav-container">
-        <a href="#attractions">Достопримечательности</a>
-        <a href="#map">Карта</a>
-    </div>
-</nav>
-
-<main>
-    <p class="intro">
-        Саратовская область раскинулась по берегам Волги. Здесь можно увидеть
-        старинные театры и музеи, лесистые горы национального парка и памятные места,
-        связанные с первым полётом человека в космос.
-    </p>
-
-    <section id="attractions" class="attractions-grid">
-
-        <div class="card">
-            <img src="images/park-pobedy.jpg" alt="Парк Победы на Соколовой горе" loading="lazy">
-            <div class="card-content">
-                <h3>Парк Победы на Соколовой горе</h3>
-                <p>Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/radishchev-museum.jpg" alt="Музей имени Радищева" loading="lazy">
-            <div class="card-content">
-                <h3>Музей имени Радищева</h3>
-                <p>Один из старейших художественных музеев России с богатой коллекцией живописи.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/conservatory.jpg" alt="Саратовская консерватория" loading="lazy">
-            <div class="card-content">
-                <h3>Саратовская консерватория</h3>
-                <p>Историческое здание с концертным залом, одна из музыкальных жемчужин города.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/gagarin-landing.jpg" alt="Место приземления Гагарина" loading="lazy">
-            <div class="card-content">
-                <h3>Место приземления Гагарина</h3>
-                <p>Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/khvalynsk-park.jpg" alt="Национальный парк «Хвалынский»" loading="lazy">
-            <div class="card-content">
-                <h3>Национальный парк «Хвалынский»</h3>
-                <p>Лесистые склоны Приволжской возвышенности, живописные виды и тропы для прогулок.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/volsk-chalk-mountains.jpg" alt="Меловые горы в Вольске" loading="lazy">
-            <div class="card-content">
-                <h3>Меловые горы в Вольске</h3>
-                <p>Белые склоны над Волгой и старые карьеры, связанные с историей цементной промышленности.</p>
-                <a href="#">Подробнее</a>
-            </div>
-        </div>
-
-    </section>
-
-    <section id="map" class="map-section">
-        <h2>Карта</h2>
-        <iframe class="placeholder-map"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=45.85,51.40,46.25,51.65&layer=mapnik"
-            loading="lazy"></iframe>
-    </section>
-</main>
-
-<footer>
-    <p>&copy; 2026 Путеводитель по Саратовской области</p>
-</footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Достопримечательности Саратовской области</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
     :root {
@@ -302,7 +29,7 @@
     header {
         background: linear-gradient(135deg, var(--primary-color), #003366);
         color: white;
-        padding: 2rem 0;
+        padding: 2rem 1rem;
         text-align: center;
     }
 
@@ -396,6 +123,20 @@
         flex-direction: column;
     }
 
+    .tag {
+        display: inline-block;
+        align-self: flex-start;
+        font-size: 0.75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--secondary-color);
+        background: #e6f0fa;
+        padding: 0.15rem 0.6rem;
+        border-radius: 20px;
+        margin-bottom: 0.6rem;
+    }
+
     .card h3 {
         color: var(--primary-color);
         margin-bottom: 0.5rem;
@@ -408,20 +149,151 @@
         color: #555;
     }
 
-    .card a {
-        display: inline-block;
+    .card-buttons {
+        display: flex;
+        gap: 0.6rem;
         margin-top: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-block;
         padding: 0.5rem 1rem;
         background: var(--primary-color);
         color: white;
         text-decoration: none;
+        border: 2px solid var(--primary-color);
         border-radius: 5px;
         text-align: center;
         font-weight: bold;
+        font-size: 0.9rem;
+        cursor: pointer;
     }
 
-    .card a:hover {
+    .btn:hover {
         background: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+
+    .btn.outline {
+        background: transparent;
+        color: var(--primary-color);
+    }
+
+    .btn.outline:hover {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    /* Окно с подробной информацией */
+    dialog {
+        border: none;
+        border-radius: 12px;
+        width: min(760px, 94vw);
+        max-height: 90vh;
+        padding: 0;
+        margin: auto;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    dialog::backdrop {
+        background: rgba(0,0,0,0.55);
+    }
+
+    .dlg-scroll {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .dlg-img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        background: #e9edf2;
+        display: block;
+    }
+
+    .dlg-body {
+        padding: 1.5rem 2rem 2rem;
+    }
+
+    .dlg-body h2 {
+        color: var(--primary-color);
+        font-size: 1.7rem;
+        margin: 0.3rem 0 1rem;
+    }
+
+    .dlg-body h4 {
+        color: var(--primary-color);
+        margin: 1.4rem 0 0.5rem;
+        font-size: 1.1rem;
+    }
+
+    .dlg-body p {
+        margin-bottom: 0.8rem;
+        color: #444;
+    }
+
+    .dlg-body ul {
+        margin-left: 1.3rem;
+        color: #444;
+    }
+
+    .dlg-body li {
+        margin-bottom: 0.3rem;
+    }
+
+    .info-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+    }
+
+    .info-table th,
+    .info-table td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.5rem 0.6rem;
+        border-bottom: 1px solid #e3e7ec;
+    }
+
+    .info-table th {
+        width: 32%;
+        color: var(--primary-color);
+    }
+
+    .dlg-close {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        border: none;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.55);
+        color: white;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .dlg-close:hover {
+        background: rgba(0,0,0,0.8);
+    }
+
+    .dlg-actions {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+    }
+
+    .note {
+        font-size: 0.85rem;
+        color: #777;
+        margin-top: 1rem;
     }
 
     .map-section {
@@ -450,9 +322,19 @@
     }
 
     .leaflet-popup-content p {
-        margin: 0;
+        margin: 0 0 0.5rem;
         font-size: 0.9rem;
         text-align: left;
+    }
+
+    .popup-btn {
+        padding: 0.3rem 0.8rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
     }
 
     footer {
@@ -461,6 +343,12 @@
         background: var(--primary-color);
         color: white;
         margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+        .dlg-body { padding: 1.2rem; }
+        .dlg-img { height: 190px; }
+        header h1 { font-size: 2rem; }
     }
 </style>
 </head>
@@ -485,63 +373,7 @@
         связанные с первым полётом человека в космос.
     </p>
 
-    <section id="attractions" class="attractions-grid">
-
-        <div class="card">
-            <img src="images/park-pobedy.jpg" alt="Парк Победы на Соколовой горе" loading="lazy">
-            <div class="card-content">
-                <h3>Парк Победы на Соколовой горе</h3>
-                <p>Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.</p>
-                <a href="#map" data-place="0">Показать на карте</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/radishchev-museum.jpg" alt="Музей имени Радищева" loading="lazy">
-            <div class="card-content">
-                <h3>Музей имени Радищева</h3>
-                <p>Один из старейших художественных музеев России с богатой коллекцией живописи.</p>
-                <a href="#map" data-place="1">Показать на карте</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/conservatory.jpg" alt="Саратовская консерватория" loading="lazy">
-            <div class="card-content">
-                <h3>Саратовская консерватория</h3>
-                <p>Историческое здание с концертным залом, одна из музыкальных жемчужин города.</p>
-                <a href="#map" data-place="2">Показать на карте</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/gagarin-landing.jpg" alt="Место приземления Гагарина" loading="lazy">
-            <div class="card-content">
-                <h3>Место приземления Гагарина</h3>
-                <p>Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.</p>
-                <a href="#map" data-place="3">Показать на карте</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/khvalynsk-park.jpg" alt="Национальный парк «Хвалынский»" loading="lazy">
-            <div class="card-content">
-                <h3>Национальный парк «Хвалынский»</h3>
-                <p>Лесистые склоны Приволжской возвышенности, живописные виды и тропы для прогулок.</p>
-                <a href="#map" data-place="4">Показать на карте</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="images/volsk-chalk-mountains.jpg" alt="Меловые горы в Вольске" loading="lazy">
-            <div class="card-content">
-                <h3>Меловые горы в Вольске</h3>
-                <p>Белые склоны над Волгой и старые карьеры, связанные с историей цементной промышленности.</p>
-                <a href="#map" data-place="5">Показать на карте</a>
-            </div>
-        </div>
-
-    </section>
+    <section id="attractions" class="attractions-grid"></section>
 
     <section id="map" class="map-section">
         <h2>Карта достопримечательностей</h2>
@@ -553,25 +385,172 @@
     <p>&copy; 2026 Путеводитель по Саратовской области</p>
 </footer>
 
+<!-- Окно с подробной информацией -->
+<dialog id="details">
+    <button class="dlg-close" id="dlg-close" aria-label="Закрыть">&times;</button>
+    <div class="dlg-scroll" id="dlg-content"></div>
+</dialog>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-    // Список мест: порядок соответствует data-place в карточках.
-    // Чтобы добавить место, допишите строку сюда (и карточку в HTML).
+    // ===== ДАННЫЕ =====
+    // Чтобы добавить место, допишите объект в этот список — карточка, окно и метка появятся сами.
     const places = [
-        { name: "Парк Победы на Соколовой горе", coords: [51.5655, 45.9680],
-          text: "Мемориал с монументом «Журавли» и видом на Волгу." },
-        { name: "Музей имени Радищева", coords: [51.5337, 46.0168],
-          text: "Один из старейших художественных музеев России." },
-        { name: "Саратовская консерватория", coords: [51.5316, 46.0176],
-          text: "Историческое здание с концертным залом." },
-        { name: "Место приземления Гагарина", coords: [51.2835, 46.8175],
-          text: "Мемориальный комплекс близ Энгельса." },
-        { name: "Национальный парк «Хвалынский»", coords: [52.4933, 48.1003],
-          text: "Лесистые склоны Приволжской возвышенности." },
-        { name: "Меловые горы в Вольске", coords: [52.0390, 47.3830],
-          text: "Белые склоны над Волгой и старые карьеры." }
+        {
+            name: "Парк Победы на Соколовой горе",
+            img: "images/park-pobedy.jpg",
+            type: "Мемориал · Саратов",
+            short: "Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.",
+            coords: [51.5655, 45.9680],
+            history: [
+                "Парк Победы расположен на Соколовой горе — одной из самых высоких точек над Волгой. Отсюда открывается широкая панорама: река, город, острова и Энгельс на левом берегу. Парк создавался как мемориал в память о подвиге народа в Великой Отечественной войне и стал одним из главных мест, куда саратовцы приходят в День Победы.",
+                "Символом комплекса считается монумент «Журавли». Журавлиная стая — образ, знакомый по поэзии военных лет: птицы напоминают о тех, кто не вернулся с войны. На территории парка работает музей боевой славы, а рядом с ним под открытым небом представлена военная техника."
+            ],
+            highlights: [
+                "Монумент «Журавли»",
+                "Музей боевой славы",
+                "Экспозиция военной техники под открытым небом",
+                "Смотровые площадки с видом на Волгу и Энгельс"
+            ],
+            info: [
+                ["Где находится", "Саратов, Соколовая гора"],
+                ["Когда ехать", "В тёплое время года; особенно красиво на закате"],
+                ["Совет", "На горе часто ветрено — возьмите куртку. Часы работы музея уточняйте заранее"]
+            ]
+        },
+        {
+            name: "Музей имени Радищева",
+            img: "images/radishchev-museum.jpg",
+            type: "Музей · Саратов",
+            short: "Один из старейших художественных музеев России с богатой коллекцией живописи.",
+            coords: [51.5337, 46.0168],
+            history: [
+                "Саратовский государственный художественный музей имени А. Н. Радищева был основан в 1885 году по инициативе художника Алексея Боголюбова — внука писателя Александра Радищева, чьё имя носит музей. Это один из старейших художественных музеев России за пределами столиц, расположенный в историческом здании конца XIX века.",
+                "В собрании представлены русская живопись XVIII–XX веков, западноевропейское искусство, древнерусская иконопись и декоративно-прикладное искусство. Отдельный интерес для гостей — работы художников, связанных с Саратовским краем: Виктора Борисова-Мусатова, родившегося в Саратове, и Кузьмы Петрова-Водкина, уроженца Хвалынска."
+            ],
+            highlights: [
+                "Русская живопись XVIII–XX веков",
+                "Западноевропейское искусство",
+                "Древнерусская иконопись",
+                "Работы Борисова-Мусатова и Петрова-Водкина",
+                "Историческое здание музея"
+            ],
+            info: [
+                ["Адрес", "Саратов, ул. Радищева, 39"],
+                ["Сколько времени нужно", "Около 1,5–2 часов на осмотр основных залов"],
+                ["Совет", "Режим работы, цены и временные выставки смотрите на официальном сайте музея"]
+            ]
+        },
+        {
+            name: "Саратовская консерватория",
+            img: "images/conservatory.jpg",
+            type: "Архитектура и музыка · Саратов",
+            short: "Историческое здание с концертным залом, одна из музыкальных жемчужин города.",
+            coords: [51.5316, 46.0176],
+            history: [
+                "Саратовская государственная консерватория имени Л. В. Собинова открылась в 1912 году и по праву считается одной из старейших консерваторий России. Она носит имя прославленного русского тенора Леонида Собинова. Здание в центре города — заметный архитектурный памятник, часть культурного ядра Саратова.",
+                "Консерватория — не только учебное заведение, но и действующая концертная площадка: в Большом зале регулярно выступают студенты, преподаватели и приглашённые артисты. Попасть на концерт — хороший способ почувствовать музыкальную атмосферу города."
+            ],
+            highlights: [
+                "Историческое здание в центре города",
+                "Концертный зал с регулярными выступлениями",
+                "Студенческие и преподавательские концерты",
+                "Прогулка по соседним улицам центра"
+            ],
+            info: [
+                ["Адрес", "Саратов, проспект Кирова, 1"],
+                ["Как попасть внутрь", "Проще всего — купить билет на концерт; афишу смотрите на сайте консерватории"],
+                ["Совет", "Совместите визит с прогулкой по центру и набережной"]
+            ]
+        },
+        {
+            name: "Место приземления Гагарина",
+            img: "images/gagarin-landing.jpg",
+            type: "Мемориал · близ Энгельса",
+            short: "Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.",
+            coords: [51.2835, 46.8175],
+            history: [
+                "12 апреля 1961 года Юрий Гагарин, совершив первый в истории орбитальный полёт, приземлился в Саратовской области — в поле близ села Смеловка в окрестностях Энгельса. По воспоминаниям очевидцев, первыми, кого он встретил, были местная жительница Анна Тахтарова и её внучка Рита.",
+                "С Саратовом судьба Гагарина связана и раньше: здесь он учился в индустриальном техникуме и сделал первые шаги в авиации, занимаясь в аэроклубе. Поэтому для региона эта история особенно значима. На месте приземления создан мемориальный комплекс, а в самом Саратове есть Набережная Космонавтов, названная в честь этого события."
+            ],
+            highlights: [
+                "Мемориальный комплекс на месте приземления",
+                "Открытое пространство и вид на степные окрестности",
+                "Связанные места: Набережная Космонавтов в Саратове",
+                "Рассказ о первом полёте человека в космос"
+            ],
+            info: [
+                ["Где находится", "Окрестности села Смеловка, неподалёку от Энгельса"],
+                ["Как добраться", "Удобнее всего на автомобиле или с экскурсией из Саратова"],
+                ["Совет", "Перед поездкой уточните маршрут и состояние дороги, а также время работы мемориала"]
+            ]
+        },
+        {
+            name: "Национальный парк «Хвалынский»",
+            img: "images/khvalynsk-park.jpg",
+            type: "Природа · Хвалынск",
+            short: "Лесистые склоны Приволжской возвышенности, живописные виды и тропы для прогулок.",
+            coords: [52.4933, 48.1003],
+            history: [
+                "Национальный парк «Хвалынский» создан в 1994 году в Хвалынском районе на правом берегу Волги. Его территорию занимают лесистые холмы Приволжской возвышенности, овраги, луга и меловые склоны. Здесь встречаются дубовые и липовые леса, а также редкие для региона виды растений и птиц.",
+                "Рядом находится город Хвалынск — один из самых уютных городов Саратовской области: старинные улицы, волжские виды и знаменитые яблоневые сады. Здесь родился художник Кузьма Петров-Водкин, и в городе есть музей, посвящённый его жизни и творчеству."
+            ],
+            highlights: [
+                "Пешие прогулки по лесным и холмистым тропам",
+                "Виды на Волгу с высоких склонов",
+                "Меловые склоны и разнообразная природа",
+                "Город Хвалынск и музей Петрова-Водкина"
+            ],
+            info: [
+                ["Где находится", "Хвалынский район, около 200 км от Саратова"],
+                ["Когда ехать", "Конец весны, лето и начало осени"],
+                ["Совет", "Дорога займёт несколько часов, поэтому лучше планировать поездку с ночёвкой. Правила посещения парка уточняйте у администрации"]
+            ]
+        },
+        {
+            name: "Меловые горы в Вольске",
+            img: "images/volsk-chalk-mountains.jpg",
+            type: "Природа и история · Вольск",
+            short: "Белые склоны над Волгой и старые карьеры, связанные с историей цементной промышленности.",
+            coords: [52.0390, 47.3830],
+            history: [
+                "Вольск — старый волжский город, известный меловыми горами и цементной промышленностью. Белые склоны над рекой — результат залегания мела, образовавшегося в меловом периоде, когда на месте этих земель было море. Контраст белого мела, зелени и синей Волги делает пейзаж необычным и фотогеничным.",
+                "Добыча мела и производство цемента десятилетиями определяли облик города. Следы этой истории видны в старых карьерах и на склонах гор. В самом городе стоит заглянуть в краеведческий музей, чтобы лучше понять, как складывалась жизнь Вольска."
+            ],
+            highlights: [
+                "Белые меловые склоны над Волгой",
+                "Виды на реку и окрестности",
+                "Старые карьеры (смотреть только издалека)",
+                "Краеведческий музей и прогулка по городу"
+            ],
+            info: [
+                ["Где находится", "Город Вольск, около 150 км от Саратова"],
+                ["Когда ехать", "Тёплый сезон; для фото лучше ясная погода"],
+                ["Безопасность", "Не спускайтесь в заброшенные карьеры и не подходите к краю обрывов: склоны могут осыпаться"]
+            ]
+        }
     ];
 
+    // ===== КАРТОЧКИ =====
+    const grid = document.getElementById('attractions');
+    places.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML =
+            '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">' +
+            '<div class="card-content">' +
+                '<span class="tag">' + p.type + '</span>' +
+                '<h3>' + p.name + '</h3>' +
+                '<p>' + p.short + '</p>' +
+                '<div class="card-buttons">' +
+                    '<button class="btn" data-details="' + i + '">Подробнее</button>' +
+                    '<a class="btn outline" href="#map" data-place="' + i + '">На карте</a>' +
+                '</div>' +
+            '</div>';
+        grid.appendChild(card);
+    });
+
+    // ===== КАРТА =====
     const map = L.map('map-canvas');
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -579,22 +558,85 @@
         attribution: '&copy; Авторы <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    const markers = places.map(p =>
+    const markers = places.map((p, i) =>
         L.marker(p.coords)
             .addTo(map)
-            .bindPopup('<h4>' + p.name + '</h4><p>' + p.text + '</p>')
+            .bindPopup(
+                '<h4>' + p.name + '</h4>' +
+                '<p>' + p.short + '</p>' +
+                '<button class="popup-btn" data-details="' + i + '">Подробнее</button>'
+            )
     );
 
-    // Подбираем масштаб так, чтобы были видны все метки
     map.fitBounds(L.latLngBounds(places.map(p => p.coords)).pad(0.15));
 
-    // Кнопка в карточке: приближает карту к нужной метке и открывает подпись
-    document.querySelectorAll('[data-place]').forEach(link => {
-        link.addEventListener('click', () => {
-            const i = Number(link.dataset.place);
-            map.flyTo(places[i].coords, 13);
-            markers[i].openPopup();
-        });
+    function showOnMap(i) {
+        document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
+        map.flyTo(places[i].coords, 13);
+        markers[i].openPopup();
+    }
+
+    // ===== ОКНО С ПОДРОБНОСТЯМИ =====
+    const dlg = document.getElementById('details');
+    const dlgContent = document.getElementById('dlg-content');
+
+    function openDetails(i) {
+        const p = places[i];
+        dlgContent.innerHTML =
+            '<img class="dlg-img" src="' + p.img + '" alt="' + p.name + '">' +
+            '<div class="dlg-body">' +
+                '<span class="tag">' + p.type + '</span>' +
+                '<h2>' + p.name + '</h2>' +
+                p.history.map(t => '<p>' + t + '</p>').join('') +
+                '<h4>Что посмотреть</h4>' +
+                '<ul>' + p.highlights.map(h => '<li>' + h + '</li>').join('') + '</ul>' +
+                '<h4>Практическая информация</h4>' +
+                '<table class="info-table">' +
+                    p.info.map(r => '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>').join('') +
+                '</table>' +
+                '<p class="note">Режим работы, цены и условия посещения могут меняться — проверяйте актуальные данные перед поездкой.</p>' +
+                '<div class="dlg-actions">' +
+                    '<button class="btn" data-map="' + i + '">Показать на карте</button>' +
+                    '<button class="btn outline" data-close>Закрыть</button>' +
+                '</div>' +
+            '</div>';
+        dlgContent.scrollTop = 0;
+        if (!dlg.open) dlg.showModal();
+    }
+
+    document.getElementById('dlg-close').addEventListener('click', () => dlg.close());
+
+    // Закрытие по клику на затемнённый фон
+    dlg.addEventListener('click', e => {
+        if (e.target === dlg) dlg.close();
+    });
+
+    // ===== ОБРАБОТЧИКИ КЛИКОВ =====
+    document.addEventListener('click', e => {
+        const detailsBtn = e.target.closest('[data-details]');
+        if (detailsBtn) {
+            map.closePopup();
+            openDetails(Number(detailsBtn.dataset.details));
+            return;
+        }
+
+        const mapBtn = e.target.closest('[data-map]');
+        if (mapBtn) {
+            dlg.close();
+            showOnMap(Number(mapBtn.dataset.map));
+            return;
+        }
+
+        if (e.target.closest('[data-close]')) {
+            dlg.close();
+            return;
+        }
+
+        const placeLink = e.target.closest('[data-place]');
+        if (placeLink) {
+            e.preventDefault();
+            showOnMap(Number(placeLink.dataset.place));
+        }
     });
 </script>
 
