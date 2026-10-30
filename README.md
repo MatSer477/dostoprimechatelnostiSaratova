@@ -23,7 +23,12 @@
     body {
         line-height: 1.6;
         color: var(--text-color);
-        background-color: #fff;
+        /* Фон: узор из волн поверх градиента «небо — берег» */
+        background-color: #dbeaf7;
+        background-image:
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='24' viewBox='0 0 120 24'%3E%3Cpath d='M0 12 Q15 0 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23004080' stroke-opacity='0.07' stroke-width='2'/%3E%3C/svg%3E"),
+            linear-gradient(180deg, #cfe6f7 0%, #eaf3fa 45%, #f7f1e3 100%);
+        background-attachment: fixed;
     }
 
     header {
@@ -45,7 +50,7 @@
     }
 
     nav {
-        background: var(--bg-light);
+        background: rgba(245,247,250,0.95);
         padding: 1rem 0;
         position: sticky;
         top: 0;
@@ -79,12 +84,14 @@
 
     .intro {
         text-align: center;
-        margin-bottom: 3rem;
+        margin: 0 auto 3rem;
         font-size: 1.1rem;
         line-height: 1.8;
         max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
+        background: rgba(255,255,255,0.85);
+        padding: 1.5rem 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .attractions-grid {
@@ -297,11 +304,12 @@
     }
 
     .map-section {
-        background: var(--bg-light);
+        background: rgba(255,255,255,0.8);
         padding: 3rem 2rem;
         margin-top: 3rem;
         border-radius: 10px;
         text-align: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .map-section h2 {
@@ -314,6 +322,12 @@
         height: 500px;
         border-radius: 10px;
         z-index: 1;
+    }
+
+    .leaflet-control-attribution {
+        font-size: 10px;
+        background: rgba(255,255,255,0.6) !important;
+        padding: 0 5px;
     }
 
     .leaflet-popup-content h4 {
@@ -345,10 +359,17 @@
         margin-top: 3rem;
     }
 
+    footer .credit {
+        font-size: 0.8rem;
+        opacity: 0.8;
+        margin-top: 0.5rem;
+    }
+
     @media (max-width: 600px) {
         .dlg-body { padding: 1.2rem; }
         .dlg-img { height: 190px; }
         header h1 { font-size: 2rem; }
+        .intro { padding: 1.2rem; }
     }
 </style>
 </head>
@@ -383,6 +404,7 @@
 
 <footer>
     <p>&copy; 2026 Путеводитель по Саратовской области</p>
+    <p class="credit">Фотографии: Wikimedia Commons (свободные лицензии)</p>
 </footer>
 
 <!-- Окно с подробной информацией -->
@@ -401,7 +423,7 @@
             img: "images/park-pobedy.jpg",
             type: "Мемориал · Саратов",
             short: "Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.",
-            coords: [51.5655, 45.9680],
+            coords: [51.5423, 46.0616],
             history: [
                 "Парк Победы расположен на Соколовой горе — одной из самых высоких точек над Волгой. Отсюда открывается широкая панорама: река, город, острова и Энгельс на левом берегу. Парк создавался как мемориал в память о подвиге народа в Великой Отечественной войне и стал одним из главных мест, куда саратовцы приходят в День Победы.",
                 "Символом комплекса считается монумент «Журавли». Журавлиная стая — образ, знакомый по поэзии военных лет: птицы напоминают о тех, кто не вернулся с войны. На территории парка работает музей боевой славы, а рядом с ним под открытым небом представлена военная техника."
@@ -550,12 +572,51 @@
         grid.appendChild(card);
     });
 
+    // ===== АВТОПОДБОР ФОТО ИЗ ВИКИПЕДИИ =====
+    // Работает, если локального файла из images/ нет. Порядок как в places.
+    const photoQueries = [
+        "Парк Победы Саратов Соколовая гора",
+        "Саратовский художественный музей имени Радищева",
+        "Саратовская консерватория имени Собинова",
+        "Приземление Гагарина Смеловка памятник",
+        "Хвалынский национальный парк",
+        "Вольск меловые горы"
+    ];
+
+    async function wikiPhoto(query) {
+        const url = 'https://ru.wikipedia.org/w/api.php?action=query&format=json&origin=*' +
+            '&generator=search&gsrlimit=3&prop=pageimages&piprop=thumbnail&pithumbsize=900' +
+            '&gsrsearch=' + encodeURIComponent(query);
+        const res = await fetch(url);
+        const data = await res.json();
+        const pages = Object.values((data.query || {}).pages || {})
+            .sort((a, b) => a.index - b.index);
+        const hit = pages.find(p => p.thumbnail);
+        return hit ? hit.thumbnail.source : null;
+    }
+
+    places.forEach((p, i) => {
+        const probe = new Image();
+        probe.onerror = async () => {
+            try {
+                const photo = await wikiPhoto(photoQueries[i]);
+                if (!photo) return;
+                places[i].img = photo; // подхватится и в окне «Подробнее»
+                document.querySelectorAll('.card')[i].querySelector('img').src = photo;
+            } catch (e) { /* без интернета останется серая заглушка */ }
+        };
+        probe.src = p.img;
+    });
+
     // ===== КАРТА =====
     const map = L.map('map-canvas');
 
+    // Убираем «Leaflet» с флажком; подпись OpenStreetMap оставляем (требование лицензии)
+    map.attributionControl.setPrefix(false);
+
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 18,
-        attribution: '&copy; Авторы <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
     const markers = places.map((p, i) =>
