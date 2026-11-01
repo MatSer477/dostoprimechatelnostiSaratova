@@ -2,12 +2,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Достопримечательности Саратовской области</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<title>Путеводитель по Саратовской области</title>
 <style>
     :root {
-        --primary-color: #004080;
-        --secondary-color: #0066cc;
+        --primary-color: #004d9e;
+        --secondary-color: #1a75cc;
         --text-color: #333;
         --bg-light: #f5f7fa;
     }
@@ -375,328 +374,157 @@
 <body>
 
 <header>
-    <h1>Саратовская область</h1>
-    <p>Волга, меловые горы и места, с которых начался путь в космос</p>
+    <h1>Путеводитель по Саратовской области</h1>
+    <p>Откройте для себя красоту Поволжья!</p>
 </header>
 
-<nav>
-    <div class="nav-container">
-        <a href="#attractions">Достопримечательности</a>
-        <a href="#map">Карта</a>
-    </div>
-</nav>
-
 <main>
-    <p class="intro">
-        Саратовская область раскинулась по берегам Волги. Здесь можно увидеть
-        старинные театры и музеи, лесистые горы национального парка и памятные места,
-        связанные с первым полётом человека в космос.
-    </p>
+    <section class="attractions-grid">
 
-    <section id="attractions" class="attractions-grid"></section>
+        <!-- Серебряный родник -->
+        <article class="card">
+            <img src="https://i.imgur.com/xgKJrQl.png" alt="Серебряный родник" loading="lazy">
+            <div class="card-content">
+                <span class="tag">Природа</span>
+                <h3>Серебряный родник</h3>
+                <p>Святой источник с кристально чистой водой, богатый серебром.</p>
+                <div class="card-buttons">
+                    <button class="btn" data-open>Подробнее</button>
+                    <a href="#" class="btn outline">Маршрут</a>
+                </div>
+            </div>
+        </article>
 
-    <section id="map" class="map-section">
-        <h2>Карта достопримечательностей</h2>
-        <div id="map-canvas" class="placeholder-map"></div>
+        <!-- Село Лох -->
+        <article class="card">
+            <img src="https://i.imgur.com/wvqjZkU.png" alt="Село Лох" loading="lazy">
+            <div class="card-content">
+                <span class="tag">История</span>
+                <h3>Село Лох</h3>
+                <p>Старинное село с деревянной мельницей и легендой о Кудеяре.</p>
+                <div class="card-buttons">
+                    <button class="btn" data-open>Подробнее</button>
+                    <a href="#" class="btn outline">Фотогалерея</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Дунина гора -->
+        <article class="card">
+            <img src="images/dunina-gora.jpg" alt="Дунина гора" loading="lazy">
+            <div class="card-content">
+                <span class="tag">Геология</span>
+                <h3>Дунина гора</h3>
+                <p>Геологический останец у реки Медведицы — место силы природы.</p>
+                <div class="card-buttons">
+                    <button class="btn" data-open>Подробнее</button>
+                    <a href="#" class="btn outline">Как добраться</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Утёс Степана Разина -->
+        <article class="card">
+            <img src="images/utyos-razina.jpg" alt="Утёс Степана Разина" loading="lazy">
+            <div class="card-content">
+                <span class="tag">Легенды</span>
+                <h3>Утёс Степана Разина</h3>
+                <p>Археологический памятник с видом на Волгу и легендарными историями.</p>
+                <div class="card-buttons">
+                    <button class="btn" data-open>Подробнее</button>
+                    <a href="#" class="btn outline">Панорама</a>
+                </div>
+            </div>
+        </article>
+
     </section>
 </main>
 
 <footer>
     <p>&copy; 2026 Путеводитель по Саратовской области</p>
-    <p class="credit">Фотографии: Wikimedia Commons (свободные лицензии)</p>
+    <p class="credit">Фотографии: авторы изображений</p>
 </footer>
 
-<!-- Окно с подробной информацией -->
+<!-- Общее окно «Подробнее» -->
 <dialog id="details">
     <button class="dlg-close" id="dlg-close" aria-label="Закрыть">&times;</button>
     <div class="dlg-scroll" id="dlg-content"></div>
 </dialog>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
-    // ===== ДАННЫЕ =====
-    // Чтобы добавить место, допишите объект в этот список — карточка, окно и метка появятся сами.
-    const places = [
-        {
-            name: "Парк Победы на Соколовой горе",
-            img: "images/park-pobedy.jpg",
-            type: "Мемориал · Саратов",
-            short: "Мемориал с монументом «Журавли» и панорамой на Волгу и город Саратов.",
-            coords: [51.5423, 46.0616],
-            history: [
-                "Парк Победы расположен на Соколовой горе — одной из самых высоких точек над Волгой. Отсюда открывается широкая панорама: река, город, острова и Энгельс на левом берегу. Парк создавался как мемориал в память о подвиге народа в Великой Отечественной войне и стал одним из главных мест, куда саратовцы приходят в День Победы.",
-                "Символом комплекса считается монумент «Журавли». Журавлиная стая — образ, знакомый по поэзии военных лет: птицы напоминают о тех, кто не вернулся с войны. На территории парка работает музей боевой славы, а рядом с ним под открытым небом представлена военная техника."
-            ],
-            highlights: [
-                "Монумент «Журавли»",
-                "Музей боевой славы",
-                "Экспозиция военной техники под открытым небом",
-                "Смотровые площадки с видом на Волгу и Энгельс"
-            ],
-            info: [
-                ["Где находится", "Саратов, Соколовая гора"],
-                ["Когда ехать", "В тёплое время года; особенно красиво на закате"],
-                ["Совет", "На горе часто ветрено — возьмите куртку. Часы работы музея уточняйте заранее"]
-            ]
-        },
-        {
-            name: "Музей имени Радищева",
-            img: "images/radishchev-museum.jpg",
-            type: "Музей · Саратов",
-            short: "Один из старейших художественных музеев России с богатой коллекцией живописи.",
-            coords: [51.5337, 46.0168],
-            history: [
-                "Саратовский государственный художественный музей имени А. Н. Радищева был основан в 1885 году по инициативе художника Алексея Боголюбова — внука писателя Александра Радищева, чьё имя носит музей. Это один из старейших художественных музеев России за пределами столиц, расположенный в историческом здании конца XIX века.",
-                "В собрании представлены русская живопись XVIII–XX веков, западноевропейское искусство, древнерусская иконопись и декоративно-прикладное искусство. Отдельный интерес для гостей — работы художников, связанных с Саратовским краем: Виктора Борисова-Мусатова, родившегося в Саратове, и Кузьмы Петрова-Водкина, уроженца Хвалынска."
-            ],
-            highlights: [
-                "Русская живопись XVIII–XX веков",
-                "Западноевропейское искусство",
-                "Древнерусская иконопись",
-                "Работы Борисова-Мусатова и Петрова-Водкина",
-                "Историческое здание музея"
-            ],
-            info: [
-                ["Адрес", "Саратов, ул. Радищева, 39"],
-                ["Сколько времени нужно", "Около 1,5–2 часов на осмотр основных залов"],
-                ["Совет", "Режим работы, цены и временные выставки смотрите на официальном сайте музея"]
-            ]
-        },
-        {
-            name: "Саратовская консерватория",
-            img: "images/conservatory.jpg",
-            type: "Архитектура и музыка · Саратов",
-            short: "Историческое здание с концертным залом, одна из музыкальных жемчужин города.",
-            coords: [51.5316, 46.0176],
-            history: [
-                "Саратовская государственная консерватория имени Л. В. Собинова открылась в 1912 году и по праву считается одной из старейших консерваторий России. Она носит имя прославленного русского тенора Леонида Собинова. Здание в центре города — заметный архитектурный памятник, часть культурного ядра Саратова.",
-                "Консерватория — не только учебное заведение, но и действующая концертная площадка: в Большом зале регулярно выступают студенты, преподаватели и приглашённые артисты. Попасть на концерт — хороший способ почувствовать музыкальную атмосферу города."
-            ],
-            highlights: [
-                "Историческое здание в центре города",
-                "Концертный зал с регулярными выступлениями",
-                "Студенческие и преподавательские концерты",
-                "Прогулка по соседним улицам центра"
-            ],
-            info: [
-                ["Адрес", "Саратов, проспект Кирова, 1"],
-                ["Как попасть внутрь", "Проще всего — купить билет на концерт; афишу смотрите на сайте консерватории"],
-                ["Совет", "Совместите визит с прогулкой по центру и набережной"]
-            ]
-        },
-        {
-            name: "Место приземления Гагарина",
-            img: "images/gagarin-landing.jpg",
-            type: "Мемориал · близ Энгельса",
-            short: "Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.",
-            coords: [51.2835, 46.8175],
-            history: [
-                "12 апреля 1961 года Юрий Гагарин, совершив первый в истории орбитальный полёт, приземлился в Саратовской области — в поле близ села Смеловка в окрестностях Энгельса. По воспоминаниям очевидцев, первыми, кого он встретил, были местная жительница Анна Тахтарова и её внучка Рита.",
-                "С Саратовом судьба Гагарина связана и раньше: здесь он учился в индустриальном техникуме и сделал первые шаги в авиации, занимаясь в аэроклубе. Поэтому для региона эта история особенно значима. На месте приземления создан мемориальный комплекс, а в самом Саратове есть Набережная Космонавтов, названная в честь этого события."
-            ],
-            highlights: [
-                "Мемориальный комплекс на месте приземления",
-                "Открытое пространство и вид на степные окрестности",
-                "Связанные места: Набережная Космонавтов в Саратове",
-                "Рассказ о первом полёте человека в космос"
-            ],
-            info: [
-                ["Где находится", "Окрестности села Смеловка, неподалёку от Энгельса"],
-                ["Как добраться", "Удобнее всего на автомобиле или с экскурсией из Саратова"],
-                ["Совет", "Перед поездкой уточните маршрут и состояние дороги, а также время работы мемориала"]
-            ]
-        },
-        {
-            name: "Национальный парк «Хвалынский»",
-            img: "images/khvalynsk-park.jpg",
-            type: "Природа · Хвалынск",
-            short: "Лесистые склоны Приволжской возвышенности, живописные виды и тропы для прогулок.",
-            coords: [52.4933, 48.1003],
-            history: [
-                "Национальный парк «Хвалынский» создан в 1994 году в Хвалынском районе на правом берегу Волги. Его территорию занимают лесистые холмы Приволжской возвышенности, овраги, луга и меловые склоны. Здесь встречаются дубовые и липовые леса, а также редкие для региона виды растений и птиц.",
-                "Рядом находится город Хвалынск — один из самых уютных городов Саратовской области: старинные улицы, волжские виды и знаменитые яблоневые сады. Здесь родился художник Кузьма Петров-Водкин, и в городе есть музей, посвящённый его жизни и творчеству."
-            ],
-            highlights: [
-                "Пешие прогулки по лесным и холмистым тропам",
-                "Виды на Волгу с высоких склонов",
-                "Меловые склоны и разнообразная природа",
-                "Город Хвалынск и музей Петрова-Водкина"
-            ],
-            info: [
-                ["Где находится", "Хвалынский район, около 200 км от Саратова"],
-                ["Когда ехать", "Конец весны, лето и начало осени"],
-                ["Совет", "Дорога займёт несколько часов, поэтому лучше планировать поездку с ночёвкой. Правила посещения парка уточняйте у администрации"]
-            ]
-        },
-        {
-            name: "Меловые горы в Вольске",
-            img: "images/volsk-chalk-mountains.jpg",
-            type: "Природа и история · Вольск",
-            short: "Белые склоны над Волгой и старые карьеры, связанные с историей цементной промышленности.",
-            coords: [52.0390, 47.3830],
-            history: [
-                "Вольск — старый волжский город, известный меловыми горами и цементной промышленностью. Белые склоны над рекой — результат залегания мела, образовавшегося в меловом периоде, когда на месте этих земель было море. Контраст белого мела, зелени и синей Волги делает пейзаж необычным и фотогеничным.",
-                "Добыча мела и производство цемента десятилетиями определяли облик города. Следы этой истории видны в старых карьерах и на склонах гор. В самом городе стоит заглянуть в краеведческий музей, чтобы лучше понять, как складывалась жизнь Вольска."
-            ],
-            highlights: [
-                "Белые меловые склоны над Волгой",
-                "Виды на реку и окрестности",
-                "Старые карьеры (смотреть только издалека)",
-                "Краеведческий музей и прогулка по городу"
-            ],
-            info: [
-                ["Где находится", "Город Вольск, около 150 км от Саратова"],
-                ["Когда ехать", "Тёплый сезон; для фото лучше ясная погода"],
-                ["Безопасность", "Не спускайтесь в заброшенные карьеры и не подходите к краю обрывов: склоны могут осыпаться"]
-            ]
-        }
-    ];
-
-    // ===== КАРТОЧКИ =====
-    const grid = document.getElementById('attractions');
-    places.forEach((p, i) => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML =
-            '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy">' +
-            '<div class="card-content">' +
-                '<span class="tag">' + p.type + '</span>' +
-                '<h3>' + p.name + '</h3>' +
-                '<p>' + p.short + '</p>' +
-                '<div class="card-buttons">' +
-                    '<button class="btn" data-details="' + i + '">Подробнее</button>' +
-                    '<a class="btn outline" href="#map" data-place="' + i + '">На карте</a>' +
-                '</div>' +
-            '</div>';
-        grid.appendChild(card);
-    });
-
-    // ===== АВТОПОДБОР ФОТО ИЗ ВИКИПЕДИИ =====
-    // Работает, если локального файла из images/ нет. Порядок как в places.
-    const photoQueries = [
-        "Парк Победы Саратов Соколовая гора",
-        "Саратовский художественный музей имени Радищева",
-        "Саратовская консерватория имени Собинова",
-        "Приземление Гагарина Смеловка памятник",
-        "Хвалынский национальный парк",
-        "Вольск меловые горы"
-    ];
-
-    async function wikiPhoto(query) {
-        const url = 'https://ru.wikipedia.org/w/api.php?action=query&format=json&origin=*' +
-            '&generator=search&gsrlimit=3&prop=pageimages&piprop=thumbnail&pithumbsize=900' +
-            '&gsrsearch=' + encodeURIComponent(query);
-        const res = await fetch(url);
-        const data = await res.json();
-        const pages = Object.values((data.query || {}).pages || {})
-            .sort((a, b) => a.index - b.index);
-        const hit = pages.find(p => p.thumbnail);
-        return hit ? hit.thumbnail.source : null;
-    }
-
-    places.forEach((p, i) => {
-        const probe = new Image();
-        probe.onerror = async () => {
-            try {
-                const photo = await wikiPhoto(photoQueries[i]);
-                if (!photo) return;
-                places[i].img = photo; // подхватится и в окне «Подробнее»
-                document.querySelectorAll('.card')[i].querySelector('img').src = photo;
-            } catch (e) { /* без интернета останется серая заглушка */ }
-        };
-        probe.src = p.img;
-    });
-
-    // ===== КАРТА =====
-    const map = L.map('map-canvas');
-
-    // Убираем «Leaflet» с флажком; подпись OpenStreetMap оставляем (требование лицензии)
-    map.attributionControl.setPrefix(false);
-
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    const markers = places.map((p, i) =>
-        L.marker(p.coords)
-            .addTo(map)
-            .bindPopup(
-                '<h4>' + p.name + '</h4>' +
-                '<p>' + p.short + '</p>' +
-                '<button class="popup-btn" data-details="' + i + '">Подробнее</button>'
-            )
-    );
-
-    map.fitBounds(L.latLngBounds(places.map(p => p.coords)).pad(0.15));
-
-    function showOnMap(i) {
-        document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
-        map.flyTo(places[i].coords, 13);
-        markers[i].openPopup();
-    }
-
-    // ===== ОКНО С ПОДРОБНОСТЯМИ =====
     const dlg = document.getElementById('details');
     const dlgContent = document.getElementById('dlg-content');
 
-    function openDetails(i) {
-        const p = places[i];
-        dlgContent.innerHTML =
-            '<img class="dlg-img" src="' + p.img + '" alt="' + p.name + '">' +
-            '<div class="dlg-body">' +
-                '<span class="tag">' + p.type + '</span>' +
-                '<h2>' + p.name + '</h2>' +
-                p.history.map(t => '<p>' + t + '</p>').join('') +
-                '<h4>Что посмотреть</h4>' +
-                '<ul>' + p.highlights.map(h => '<li>' + h + '</li>').join('') + '</ul>' +
-                '<h4>Практическая информация</h4>' +
-                '<table class="info-table">' +
-                    p.info.map(r => '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>').join('') +
-                '</table>' +
-                '<p class="note">Режим работы, цены и условия посещения могут меняться — проверяйте актуальные данные перед поездкой.</p>' +
-                '<div class="dlg-actions">' +
-                    '<button class="btn" data-map="' + i + '">Показать на карте</button>' +
-                    '<button class="btn outline" data-close>Закрыть</button>' +
-                '</div>' +
-            '</div>';
-        dlgContent.scrollTop = 0;
-        if (!dlg.open) dlg.showModal();
+    // Серая картинка с названием, если фото не загрузилось
+    function placeholder(text) {
+        const svg =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">' +
+            '<rect width="100%" height="100%" fill="#eef0f2"/>' +
+            '<text x="50%" y="50%" fill="#8a94a0" font-family="Arial" font-size="28" ' +
+            'text-anchor="middle" dominant-baseline="middle">' + text + '</text></svg>';
+        return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
     }
+
+    document.querySelectorAll('.card img').forEach(img => {
+        const useFallback = () => {
+            if (img.dataset.fallback) return;
+            img.dataset.fallback = '1';
+            img.src = placeholder(img.alt);
+        };
+        img.addEventListener('error', useFallback);
+        if (img.complete && img.naturalWidth === 0) useFallback();
+    });
+
+    // Окно заполняется данными из карточки
+    function openDetails(card) {
+        const img = card.querySelector('img');
+        const tag = card.querySelector('.tag').textContent;
+        const title = card.querySelector('h3').textContent;
+        const text = card.querySelector('p').textContent;
+
+        dlgContent.textContent = '';
+
+        const pic = document.createElement('img');
+        pic.className = 'dlg-img';
+        pic.src = img.src;
+        pic.alt = title;
+
+        const body = document.createElement('div');
+        body.className = 'dlg-body';
+
+        const tagEl = document.createElement('span');
+        tagEl.className = 'tag';
+        tagEl.textContent = tag;
+
+        const h2 = document.createElement('h2');
+        h2.textContent = title;
+
+        const p = document.createElement('p');
+        p.textContent = text;
+
+        const actions = document.createElement('div');
+        actions.className = 'dlg-actions';
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'btn outline';
+        closeBtn.textContent = 'Закрыть';
+        closeBtn.addEventListener('click', () => dlg.close());
+        actions.appendChild(closeBtn);
+
+        body.append(tagEl, h2, p, actions);
+        dlgContent.append(pic, body);
+        dlgContent.scrollTop = 0;
+        dlg.showModal();
+    }
+
+    document.querySelectorAll('[data-open]').forEach(btn => {
+        btn.addEventListener('click', () => openDetails(btn.closest('.card')));
+    });
 
     document.getElementById('dlg-close').addEventListener('click', () => dlg.close());
 
     // Закрытие по клику на затемнённый фон
     dlg.addEventListener('click', e => {
         if (e.target === dlg) dlg.close();
-    });
-
-    // ===== ОБРАБОТЧИКИ КЛИКОВ =====
-    document.addEventListener('click', e => {
-        const detailsBtn = e.target.closest('[data-details]');
-        if (detailsBtn) {
-            map.closePopup();
-            openDetails(Number(detailsBtn.dataset.details));
-            return;
-        }
-
-        const mapBtn = e.target.closest('[data-map]');
-        if (mapBtn) {
-            dlg.close();
-            showOnMap(Number(mapBtn.dataset.map));
-            return;
-        }
-
-        if (e.target.closest('[data-close]')) {
-            dlg.close();
-            return;
-        }
-
-        const placeLink = e.target.closest('[data-place]');
-        if (placeLink) {
-            e.preventDefault();
-            showOnMap(Number(placeLink.dataset.place));
-        }
     });
 </script>
 
