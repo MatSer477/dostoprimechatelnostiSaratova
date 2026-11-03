@@ -6,8 +6,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <style>
     :root {
-        --primary-color: #004080;
-        --secondary-color: #0066cc;
+        --primary-color: #004d9e;
+        --secondary-color: #1a75cc;
         --text-color: #333;
         --bg-light: #f5f7fa;
     }
@@ -22,7 +22,6 @@
     body {
         line-height: 1.6;
         color: var(--text-color);
-        /* Фон: узор из волн поверх градиента «небо — берег» */
         background-color: #dbeaf7;
         background-image:
             url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='24' viewBox='0 0 120 24'%3E%3Cpath d='M0 12 Q15 0 30 12 T60 12 T90 12 T120 12' fill='none' stroke='%23004080' stroke-opacity='0.07' stroke-width='2'/%3E%3C/svg%3E"),
@@ -376,7 +375,7 @@
 
 <header>
     <h1>Саратовская область</h1>
-    <p>Волга, меловые горы и места, с которых начался путь в космос</p>
+    <p>Волга, меловые горы, родники, легенды и места, с которых начался путь в космос</p>
 </header>
 
 <nav>
@@ -389,8 +388,9 @@
 <main>
     <p class="intro">
         Саратовская область раскинулась по берегам Волги. Здесь можно увидеть
-        старинные театры и музеи, лесистые горы национального парка и памятные места,
-        связанные с первым полётом человека в космос.
+        старинные музеи, лесистые горы национального парка, сельские мельницы и родники,
+        утёсы с разбойничьими легендами и памятные места, связанные с первым полётом
+        человека в космос.
     </p>
 
     <section id="attractions" class="attractions-grid"></section>
@@ -403,10 +403,9 @@
 
 <footer>
     <p>&copy; 2026 Путеводитель по Саратовской области</p>
-    <p class="credit">Фотографии: Wikimedia Commons (свободные лицензии)</p>
+    <p class="credit">Фотографии: Wikimedia Commons (свободные лицензии) и авторы изображений</p>
 </footer>
 
-<!-- Окно с подробной информацией -->
 <dialog id="details">
     <button class="dlg-close" id="dlg-close" aria-label="Закрыть">&times;</button>
     <div class="dlg-scroll" id="dlg-content"></div>
@@ -415,7 +414,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script>
     // ===== ДАННЫЕ =====
-    // Чтобы добавить место, допишите объект в этот список — карточка, окно и метка появятся сами.
+    // coords: [широта, долгота] — если известны.
+    // geocode: строка для поиска координат в OpenStreetMap, если coords нет.
+    // approx: true — метка показывает ближайший населённый пункт, а не точное место.
     const places = [
         {
             name: "Парк Победы на Соколовой горе",
@@ -485,25 +486,25 @@
             ]
         },
         {
-            name: "Место приземления Гагарина",
+            name: "Парк покорителей космоса им. Гагарина",
             img: "images/gagarin-landing.jpg",
             type: "Мемориал · близ Энгельса",
-            short: "Мемориальный комплекс близ Энгельса, где в 1961 году приземлился первый космонавт.",
+            short: "Мемориальный парк на месте приземления первого космонавта, в 16 км от Энгельса.",
             coords: [51.2835, 46.8175],
             history: [
                 "12 апреля 1961 года Юрий Гагарин, совершив первый в истории орбитальный полёт, приземлился в Саратовской области — в поле близ села Смеловка в окрестностях Энгельса. По воспоминаниям очевидцев, первыми, кого он встретил, были местная жительница Анна Тахтарова и её внучка Рита.",
-                "С Саратовом судьба Гагарина связана и раньше: здесь он учился в индустриальном техникуме и сделал первые шаги в авиации, занимаясь в аэроклубе. Поэтому для региона эта история особенно значима. На месте приземления создан мемориальный комплекс, а в самом Саратове есть Набережная Космонавтов, названная в честь этого события."
+                "С Саратовом судьба Гагарина связана и раньше: здесь он учился в индустриальном техникуме и сделал первые шаги в авиации, занимаясь в аэроклубе. Поэтому для региона эта история особенно значима. На месте приземления создан Парк покорителей космоса, а в самом Саратове есть Набережная Космонавтов, названная в честь этого события."
             ],
             highlights: [
-                "Мемориальный комплекс на месте приземления",
+                "Мемориальный парк на месте приземления",
                 "Открытое пространство и вид на степные окрестности",
                 "Связанные места: Набережная Космонавтов в Саратове",
                 "Рассказ о первом полёте человека в космос"
             ],
             info: [
                 ["Где находится", "Окрестности села Смеловка, неподалёку от Энгельса"],
-                ["Как добраться", "Удобнее всего на автомобиле или с экскурсией из Саратова"],
-                ["Совет", "Перед поездкой уточните маршрут и состояние дороги, а также время работы мемориала"]
+                ["Как добраться", "Автобусом из Энгельса или Саратова, на автомобиле либо с экскурсией; актуальные маршруты уточняйте заранее"],
+                ["Совет", "Территория открытая и малотенистая: летом берите воду и головной убор, зимой одевайтесь теплее"]
             ]
         },
         {
@@ -549,12 +550,96 @@
                 ["Когда ехать", "Тёплый сезон; для фото лучше ясная погода"],
                 ["Безопасность", "Не спускайтесь в заброшенные карьеры и не подходите к краю обрывов: склоны могут осыпаться"]
             ]
+        },
+
+        // ===== НОВЫЕ МЕСТА =====
+        {
+            name: "Село Лох",
+            img: "https://i.imgur.com/wvqjZkU.png",
+            type: "История · Новобурасский район",
+            short: "Старинное село с восстановленной водяной мельницей и легендой о разбойнике Кудеяре.",
+            geocode: "село Лох, Новобурасский район, Саратовская область",
+            history: [
+                "Село основано в 1698 году. До революции оно процветало, в советское время пришло в упадок. Примерно с середины 2000-х энтузиасты из Саратова начали возрождать исторические места, а в 2020-х Лох стал известен любителям экологического туризма.",
+                "Происхождение названия до сих пор вызывает споры: его связывают с растением лох, с рыбой и с немецким словом Loch («яма»). Сами жители шутливо расшифровывают его как «Людей Объединяет Хорошее». Указатель с названием на въезде туристы регулярно увозят на память, и власти района закупают запасные знаки.",
+                "С окрестностями связана легенда о разбойнике Кудеяре: по преданию, он жил в пещере и прятал там награбленные сокровища. Сегодня эта территория — памятник природы «Кудеярова пещера»."
+            ],
+            highlights: [
+                "Водяная мельница — единственная отреставрированная в регионе",
+                "Храм Михаила Архангела: его возрождают сами жители",
+                "Кудеярова пещера и Симов родник",
+                "Буквы «ЛОХ» в центре села, гончарная мастерская и сувенирная лавка",
+                "Местные продукты, в том числе сыр"
+            ],
+            info: [
+                ["Где находится", "Новобурасский район, примерно полтора часа езды от Саратова"],
+                ["Сколько времени нужно", "Основные места можно обойти пешком за несколько часов; многие приезжают на целый день"],
+                ["Важно", "В конце октября 2026 года возле села горел лес на территории памятника природы «Кудеярова пещера». Перед поездкой уточните, открыт ли маршрут"]
+            ]
+        },
+        {
+            name: "Дунина гора",
+            img: "images/dunina-gora.jpg",
+            type: "Геология · у реки Медведицы",
+            short: "Геологический останец у реки Медведицы — место силы природы.",
+            history: [
+                "Геологический останец у реки Медведицы — место силы природы."
+            ],
+            highlights: [],
+            info: [
+                ["Где находится", "Окрестности реки Медведицы (точное место уточните перед поездкой)"]
+            ]
+        },
+        {
+            name: "Утёс Степана Разина",
+            img: "images/utyos-razina.jpg",
+            type: "Легенды · Белогорское",
+            short: "Крутой обрыв над Волгой, окружённый легендами о Степане Разине.",
+            geocode: "село Белогорское, Красноармейский район, Саратовская область",
+            approx: true,
+            history: [
+                "Утёс Степана Разина — высокий обрыв над правым берегом Волги у села Белогорское, на границе Саратовской и Волгоградской областей. Сегодня это одно из самых популярных мест области: маршрут «Саратов — Утёс Степана Разина» входит в число самых востребованных автомобильных.",
+                "Утёс рассекает глубокий Невольничий овраг: по преданию, атаман держал в нём пленников. С этими местами связывают лагерь разбойников, нападения на проходящие корабли и историю с персидской княжной. Это народные предания, а не доказанные факты."
+            ],
+            highlights: [
+                "Вид на Волгу с высокого берега",
+                "Невольничий овраг",
+                "Степные склоны и каменистый берег у подножия",
+                "Легенды о Стеньке Разине"
+            ],
+            info: [
+                ["Где находится", "Село Белогорское, Красноармейский район, около 120 км от Саратова"],
+                ["Как добраться", "На автомобиле: общественный транспорт к утёсу не ходит"],
+                ["Совет", "Дороги бывают плохими, а кафе, магазинов и гостиниц рядом мало — берите воду и еду. К краю обрыва не подходите"]
+            ]
+        },
+        {
+            name: "Серебряный родник",
+            img: "https://i.imgur.com/xgKJrQl.png",
+            type: "Природа · Базарный Карабулак",
+            short: "Родник среди лесного массива у села Алексеевка, который местные турбазы относят к лучшим в области.",
+            geocode: "село Алексеевка, Базарно-Карабулакский район, Саратовская область",
+            approx: true,
+            history: [
+                "Родник «Серебряный» находится недалеко от Базарного Карабулака, у села Алексеевка, среди большого лесного массива с папоротниковой зоной. Местные турбазы называют его одним из лучших и самых чистых родников области.",
+                "Название «Серебряный» носят и другие родники, поэтому перед поездкой убедитесь, что вы едете именно к этому."
+            ],
+            highlights: [
+                "Родниковая вода среди леса",
+                "Тишина и удалённость от трасс и городов",
+                "Прогулки по лесу рядом с родником"
+            ],
+            info: [
+                ["Где находится", "Окрестности села Алексеевка, Базарно-Карабулакский район, около 80 км от Саратова"],
+                ["Совет", "Для питья используйте воду только после проверки: ориентируйтесь на свежие данные анализов и рекомендации местных жителей"]
+            ]
         }
     ];
 
     // ===== КАРТОЧКИ =====
     const grid = document.getElementById('attractions');
     places.forEach((p, i) => {
+        const hasMap = !!(p.coords || p.geocode);
         const card = document.createElement('div');
         card.className = 'card';
         card.innerHTML =
@@ -565,52 +650,87 @@
                 '<p>' + p.short + '</p>' +
                 '<div class="card-buttons">' +
                     '<button class="btn" data-details="' + i + '">Подробнее</button>' +
-                    '<a class="btn outline" href="#map" data-place="' + i + '">На карте</a>' +
+                    (hasMap ? '<a class="btn outline" href="#map" data-place="' + i + '">На карте</a>' : '') +
                 '</div>' +
             '</div>';
         grid.appendChild(card);
     });
 
-    // ===== АВТОПОДБОР ФОТО ИЗ ВИКИПЕДИИ =====
-    // Работает, если локального файла из images/ нет. Порядок как в places.
+    // ===== ФОТО =====
+    // Строка — поиск главного фото статьи в Википедии.
+    // Объект {commons, article} — поиск файлов на Wikimedia Commons, затем статьи.
+    // null — автоподбор не нужен (останется заглушка, если файла нет).
     const photoQueries = [
         "Парк Победы Саратов Соколовая гора",
         "Саратовский художественный музей имени Радищева",
         "Саратовская консерватория имени Собинова",
-        "Приземление Гагарина Смеловка памятник",
+        { commons: "Парк покорителей космоса Гагарина", article: "Парк покорителей космоса" },
         "Хвалынский национальный парк",
-        "Вольск меловые горы"
+        "Вольск меловые горы",
+        "Лох село Саратовская область",
+        null,
+        { commons: "Утёс Степана Разина", article: "Утёс Степана Разина" },
+        null
     ];
+
+    function placeholder(text) {
+        const svg =
+            '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400">' +
+            '<rect width="100%" height="100%" fill="#eef0f2"/>' +
+            '<text x="50%" y="50%" fill="#8a94a0" font-family="Arial" font-size="28" ' +
+            'text-anchor="middle" dominant-baseline="middle">' + text + '</text></svg>';
+        return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
 
     async function wikiPhoto(query) {
         const url = 'https://ru.wikipedia.org/w/api.php?action=query&format=json&origin=*' +
             '&generator=search&gsrlimit=3&prop=pageimages&piprop=thumbnail&pithumbsize=900' +
             '&gsrsearch=' + encodeURIComponent(query);
-        const res = await fetch(url);
-        const data = await res.json();
+        const data = await (await fetch(url)).json();
         const pages = Object.values((data.query || {}).pages || {})
             .sort((a, b) => a.index - b.index);
         const hit = pages.find(p => p.thumbnail);
         return hit ? hit.thumbnail.source : null;
     }
 
+    async function commonsPhoto(query) {
+        const url = 'https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*' +
+            '&generator=search&gsrnamespace=6&gsrlimit=8&prop=imageinfo&iiprop=url&iiurlwidth=900' +
+            '&gsrsearch=' + encodeURIComponent(query);
+        const data = await (await fetch(url)).json();
+        const pages = Object.values((data.query || {}).pages || {})
+            .sort((a, b) => a.index - b.index);
+        const hit = pages.find(p => p.imageinfo && /\.(jpe?g|png)$/i.test(p.title));
+        return hit ? hit.imageinfo[0].thumburl : null;
+    }
+
+    function setPhoto(i, url) {
+        places[i].img = url; // подхватится и в окне «Подробнее»
+        document.querySelectorAll('.card')[i].querySelector('img').src = url;
+    }
+
     places.forEach((p, i) => {
         const probe = new Image();
+        // Если файл не загрузился — ищем фото онлайн, иначе ставим заглушку
         probe.onerror = async () => {
             try {
-                const photo = await wikiPhoto(photoQueries[i]);
-                if (!photo) return;
-                places[i].img = photo; // подхватится и в окне «Подробнее»
-                document.querySelectorAll('.card')[i].querySelector('img').src = photo;
-            } catch (e) { /* без интернета останется серая заглушка */ }
+                const q = photoQueries[i];
+                let photo = null;
+                if (q) {
+                    photo = (typeof q === 'object')
+                        ? (await commonsPhoto(q.commons)) || (await wikiPhoto(q.article))
+                        : await wikiPhoto(q);
+                }
+                setPhoto(i, photo || placeholder(p.name));
+            } catch (e) {
+                setPhoto(i, placeholder(p.name));
+            }
         };
         probe.src = p.img;
     });
 
     // ===== КАРТА =====
     const map = L.map('map-canvas');
-
-    // Убираем «Leaflet» с флажком; подпись OpenStreetMap оставляем (требование лицензии)
     map.attributionControl.setPrefix(false);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -618,21 +738,59 @@
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
     }).addTo(map);
 
-    const markers = places.map((p, i) =>
-        L.marker(p.coords)
+    const markers = [];
+
+    function addMarker(i) {
+        const p = places[i];
+        if (!p.coords || markers[i]) return;
+        markers[i] = L.marker(p.coords)
             .addTo(map)
             .bindPopup(
                 '<h4>' + p.name + '</h4>' +
                 '<p>' + p.short + '</p>' +
+                (p.approx ? '<p><i>Метка показывает ближайший населённый пункт.</i></p>' : '') +
                 '<button class="popup-btn" data-details="' + i + '">Подробнее</button>'
-            )
-    );
+            );
+    }
 
-    map.fitBounds(L.latLngBounds(places.map(p => p.coords)).pad(0.15));
+    function fitAll() {
+        const pts = places.filter(p => p.coords).map(p => p.coords);
+        if (pts.length) map.fitBounds(L.latLngBounds(pts).pad(0.15));
+    }
+
+    places.forEach((p, i) => addMarker(i));
+    fitAll();
+
+    // Поиск координат по названию (OpenStreetMap Nominatim) для мест без coords
+    const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+    async function geocode(q) {
+        const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=1&accept-language=ru&q=' +
+            encodeURIComponent(q);
+        const data = await (await fetch(url)).json();
+        return data[0] ? [Number(data[0].lat), Number(data[0].lon)] : null;
+    }
+
+    (async () => {
+        for (let i = 0; i < places.length; i++) {
+            const p = places[i];
+            if (p.coords || !p.geocode) continue;
+            try {
+                const c = await geocode(p.geocode);
+                if (c) {
+                    p.coords = c;
+                    addMarker(i);
+                    fitAll();
+                }
+            } catch (e) { /* без метки, если поиск не сработал */ }
+            await sleep(1100); // не чаще одного запроса в секунду
+        }
+    })();
 
     function showOnMap(i) {
         document.getElementById('map').scrollIntoView({ behavior: 'smooth' });
-        map.flyTo(places[i].coords, 13);
+        if (!markers[i]) return;
+        map.flyTo(places[i].coords, places[i].approx ? 12 : 13);
         markers[i].openPopup();
     }
 
@@ -642,21 +800,24 @@
 
     function openDetails(i) {
         const p = places[i];
+        const hasMap = !!(p.coords || p.geocode);
         dlgContent.innerHTML =
             '<img class="dlg-img" src="' + p.img + '" alt="' + p.name + '">' +
             '<div class="dlg-body">' +
                 '<span class="tag">' + p.type + '</span>' +
                 '<h2>' + p.name + '</h2>' +
                 p.history.map(t => '<p>' + t + '</p>').join('') +
-                '<h4>Что посмотреть</h4>' +
-                '<ul>' + p.highlights.map(h => '<li>' + h + '</li>').join('') + '</ul>' +
-                '<h4>Практическая информация</h4>' +
-                '<table class="info-table">' +
-                    p.info.map(r => '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>').join('') +
-                '</table>' +
-                '<p class="note">Режим работы, цены и условия посещения могут меняться — проверяйте актуальные данные перед поездкой.</p>' +
+                (p.highlights.length
+                    ? '<h4>Что посмотреть</h4><ul>' + p.highlights.map(h => '<li>' + h + '</li>').join('') + '</ul>'
+                    : '') +
+                (p.info.length
+                    ? '<h4>Практическая информация</h4><table class="info-table">' +
+                        p.info.map(r => '<tr><th>' + r[0] + '</th><td>' + r[1] + '</td></tr>').join('') +
+                      '</table>'
+                    : '') +
+                '<p class="note">Режим работы, цены, условия посещения и состояние дорог могут меняться — проверяйте актуальные данные перед поездкой.</p>' +
                 '<div class="dlg-actions">' +
-                    '<button class="btn" data-map="' + i + '">Показать на карте</button>' +
+                    (hasMap ? '<button class="btn" data-map="' + i + '">Показать на карте</button>' : '') +
                     '<button class="btn outline" data-close>Закрыть</button>' +
                 '</div>' +
             '</div>';
@@ -666,7 +827,6 @@
 
     document.getElementById('dlg-close').addEventListener('click', () => dlg.close());
 
-    // Закрытие по клику на затемнённый фон
     dlg.addEventListener('click', e => {
         if (e.target === dlg) dlg.close();
     });
